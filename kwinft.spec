@@ -323,8 +323,6 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %{_kf5_datadir}/applications/kwincompositing.desktop
 %{_kf5_datadir}/applications/org.kde.kwin_rules_dialog.desktop
 %{_kf5_datadir}/kservicetypes5/*.desktop
-%{_kf5_datadir}/kservicetypes5/kwin
-%{_kf5_datadir}/kservicetypes5/*.desktop
 %{_kf5_datadir}/kpackage/kcms/kcm_*
 %{_kf5_datadir}/knotifications5/kwin.notifyrc
 %{_kf5_datadir}/config.kcfg/kwin.kcfg
