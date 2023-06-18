@@ -322,8 +322,8 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %{_kf5_datadir}/applications/kcm_kwin*.desktop
 %{_kf5_datadir}/applications/kwincompositing.desktop
 %{_kf5_datadir}/applications/org.kde.kwin_rules_dialog.desktop
-%{_kf5_datadir}/kservices5/*.desktop
-%{_kf5_datadir}/kservices5/kwin
+%{_kf5_datadir}/kservicetypes5/*.desktop
+%{_kf5_datadir}/kservicetypes5/kwin
 %{_kf5_datadir}/kservicetypes5/*.desktop
 %{_kf5_datadir}/kpackage/kcms/kcm_*
 %{_kf5_datadir}/knotifications5/kwin.notifyrc
@@ -382,6 +382,7 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 
 
 %changelog
+
 * Fry Jun 16 2023 EliasOfWaffle - 5.27.0-1
 - Update to 5.27.0
 * Sat Jun 18 2022 Yaroslav Sidlovsky <zawertun@gmail.com> - 5.25.0-1
