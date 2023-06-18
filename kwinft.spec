@@ -309,6 +309,7 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %files common
 %{_datadir}/kwin
 %{_qt5_qmldir}/org/kde/kwin
+%{_qt5_qmldir}/org/kde/kwin.2/DesktopThumbnailItem.qml
 %{_kf5_libdir}/kconf_update_bin/kwin5_update_default_rules
 %{_libexecdir}/kwin_killer_helper
 %{_libexecdir}/kwin_rules_dialog
@@ -316,9 +317,13 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %{_datadir}/kconf_update/kwin.upd
 %{_datadir}/kconf_update/kwin-5.16-auto-bordersize.sh
 %{_datadir}/kconf_update/kwin-5.18-move-animspeed.py
+%{_datadir}/kconf_update/kwin-5.23-remove-cover-switch.py
+%{_datadir}/kconf_update/kwin-5.23-remove-flip-switch.py
+%{_datadir}/kconf_update/kwin-5.25-effect-pluginid-config-group.py
 %{_datadir}/kconf_update/kwin-5.21-desktop-grid-click-behavior.py
 %{_datadir}/kconf_update/kwin-5.23-placement.pl
 %{_datadir}/kconf_update/kwinrules-5.23-placement.pl
+%{_datadir}/kconf_update/kwinrules-5.23-virtual-desktop-ids.py
 %{_kf5_datadir}/applications/kcm_kwin*.desktop
 %{_kf5_datadir}/applications/kwincompositing.desktop
 %{_kf5_datadir}/applications/org.kde.kwin_rules_dialog.desktop
