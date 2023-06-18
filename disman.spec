@@ -1,7 +1,7 @@
 %global min_qt_version 5.14.0
 
 Name:    disman
-Version: 0.525.0
+Version: 0.527.0
 Release: 1%{?dist}
 Summary: Qt/C++ display management library
 
