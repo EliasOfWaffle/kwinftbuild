@@ -13,7 +13,7 @@
 
 Name:    kwinft
 Version: 5.27.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: KWin Fast Track - Wayland compositor and X11 window manager
 
 Provides:  kwin = %{version}
