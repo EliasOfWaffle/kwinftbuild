@@ -309,7 +309,7 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %files common
 %{_datadir}/kwin
 %{_qt5_qmldir}/org/kde/kwin
-%{_qt5_qmldir}/org/kde/kwin.2/DesktopThumbnailItem.qml
+%{_qt5_qmldir}/org/kde/kwin/DesktopThumbnailItem.qml
 %{_kf5_libdir}/kconf_update_bin/kwin5_update_default_rules
 %{_libexecdir}/kwin_killer_helper
 %{_libexecdir}/kwin_rules_dialog
