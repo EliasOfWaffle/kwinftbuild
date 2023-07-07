@@ -302,6 +302,23 @@ dbus-launch --exit-with-session \
 make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %endif
 
+%preun
+%systemd_user_preun plasma-kwin_x11.service
+%systemd_user_preun plasma-kwin_wayland.service
+
+%post
+/sbin/ldconfig
+%set_permissions %{_kf5_bindir}/kwin_wayland
+%systemd_user_post plasma-kwin_x11.service
+%systemd_user_post plasma-kwin_wayland.service
+
+%postun
+/sbin/ldconfig
+%systemd_user_postun plasma-kwin_x11.service
+%systemd_user_postun plasma-kwin_wayland.service
+
+%verifyscript
+%verify_permissions -e %{_kf5_bindir}/kwin_wayland
 
 %files
 %{_bindir}/kwin
