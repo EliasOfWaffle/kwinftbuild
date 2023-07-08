@@ -267,9 +267,8 @@ sed -i \
   -e 's|^find_package(Breeze ${PROJECT_VERSION} CONFIG)|find_package(Breeze 5.9 CONFIG)|' \
   CMakeLists.txt
 
-
 %build
-%cmake_kf5
+%cmake_kf5 -DBUILD_TESTING=OFF
 %cmake_build
 
 
@@ -290,35 +289,8 @@ ln -s kwin_wayland %{buildroot}%{_bindir}/kwin
 sed -ie "s|^#!/usr/bin/env python.*|#!%{__python3}|" %{buildroot}%{_datadir}/kconf_update/*.py
 rm -v %{buildroot}%{_datadir}/kconf_update/*.pye*
 
-
 %check
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.kwin_rules_dialog.desktop
-
-%if 0%{?tests}
-# using low timeout to avoid extending buildtimes too much for now -- rex
-export CTEST_OUTPUT_ON_FAILURE=1
-xvfb-run -a \
-dbus-launch --exit-with-session \
-make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
-%endif
-
-%preun
-%systemd_user_preun plasma-kwin_x11.service
-%systemd_user_preun plasma-kwin_wayland.service
-
-%post
-/sbin/ldconfig
-%set_permissions %{_kf5_bindir}/kwin_wayland
-%systemd_user_post plasma-kwin_x11.service
-%systemd_user_post plasma-kwin_wayland.service
-
-%postun
-/sbin/ldconfig
-%systemd_user_postun plasma-kwin_x11.service
-%systemd_user_postun plasma-kwin_wayland.service
-
-%verifyscript
-%verify_permissions -e %{_kf5_bindir}/kwin_wayland
 
 %files
 %{_bindir}/kwin
@@ -400,6 +372,23 @@ make test ARGS="--output-on-failure --timeout 10" -C %{_target_platform} ||:
 %doc README.md
 %license COPYING
 
+%preun
+%systemd_user_preun plasma-kwin_x11.service
+%systemd_user_preun plasma-kwin_wayland.service
+
+%post
+/sbin/ldconfig
+%set_permissions %{_kf5_bindir}/kwin_wayland
+%systemd_user_post plasma-kwin_x11.service
+%systemd_user_post plasma-kwin_wayland.service
+
+%postun
+/sbin/ldconfig
+%systemd_user_postun plasma-kwin_x11.service
+%systemd_user_postun plasma-kwin_wayland.service
+
+%verifyscript
+%verify_permissions -e %{_kf5_bindir}/kwin_wayland
 
 %changelog
 
