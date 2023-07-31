@@ -13,7 +13,7 @@
 
 Name:    kwinft
 Version: 5.27.0
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: KWin Fast Track - Wayland compositor and X11 window manager
 
 Provides:  kwin = %{version}
@@ -268,7 +268,11 @@ sed -i \
   CMakeLists.txt
 
 %build
-%cmake_kf5 -DBUILD_TESTING=OFF
+%cmake_kf -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
 %cmake_build
 
 
@@ -294,6 +298,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.kwin_rule
 
 %files
 %{_bindir}/kwin
+
+%post
+setcap CAP_SYS_NICE=+ep /usr/bin/kwin_wayland
 
 %files common
 %{_datadir}/kwin
